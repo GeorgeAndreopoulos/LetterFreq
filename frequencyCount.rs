@@ -1,4 +1,4 @@
-std::env;
+use std::env;
 use std::fs;
 use std::collections::HashMap;
 
@@ -10,5 +10,10 @@ fn main() {
        beginChar = ((beginChar as u8) + 1) as char;
        lettersCount.insert(beginChar,0);
     }
-    println!("{:?}", lettersCount);
+   //println!("{:?}", lettersCount);
+
+    let args: Vec<String> = env::args().collect();
+    let file_path = &args[1];
+    let content = fs::read_to_string(file_path);
+    println!("{:?}",content);
 }
